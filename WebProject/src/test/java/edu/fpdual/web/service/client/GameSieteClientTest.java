@@ -46,11 +46,14 @@ public class GameSieteClientTest {
     public void setUp() {
         gameSieteClient = new GameSieteClient(clientMock);
         when(clientMock.target(anyString())).thenReturn(webTargetMock);
+        when(webTargetMock.path(Mockito.anyString())).thenReturn(webTargetMock);
     }
 
     @Test
     public void testInsertGame_ok() {
 
+        gameSieteClient = new GameSieteClient(clientMock);
+        when(clientMock.target(anyString())).thenReturn(webTargetMock);
         when(webTargetMock.request()).thenReturn(builderMock);
         when(builderMock.post(Mockito.any())).thenReturn(responseMock);
         when(responseMock.getStatus()).thenReturn(201);
@@ -74,10 +77,6 @@ public class GameSieteClientTest {
 
         MatcherAssert.assertThat(actualResponse, Matchers.is(responseMock));
         MatcherAssert.assertThat(responseMock.getStatus(), Matchers.is(201));
-
-        //        when(builderMock.accept(ArgumentMatchers.any(MediaType.class))).thenReturn(builderMock);
-//        when(builderMock.buildPost(ArgumentMatchers.any(Entity.class))).thenReturn(invocationMock);
-        //when(invocationMock.invoke(Response.class)).thenReturn(responseMock);
 
     }
 

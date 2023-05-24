@@ -2,19 +2,17 @@ package edu.fpdual.web.service;
 
 import edu.fpdual.web.service.client.GameSieteClient;
 import edu.fpdual.web.service.dto.GameSiete;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.sql.Date;
+import java.util.*;
 
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
@@ -34,28 +32,47 @@ public class GameSieteServiceTest {
     @Mock
     private GameSieteService gameSieteServiceMock;
 
-    @InjectMocks
-    private GameSieteService gameSieteServiceInject;
+    @Mock
+    private Date dateMock;
 
-    @Spy
-    private Map<String, Object> responseMapMock;
+    @InjectMocks
+    private GameSieteService gameSieteService;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+        this.gameSieteService = new GameSieteService();
     }
 
     @Test
     public void testRanking_ok() {
 
-        String requestBody = "exampleRequest";
-        List<GameSiete> dataRetrieved = new ArrayList<>();
-        when(gameSieteClientMock.findByName(any())).thenReturn(dataRetrieved);
+        List<GameSiete> dataRetrieved = Arrays.asList(GameSiete.builder()
+                .player1("Alvaro")
+                .player2("Artem")
+                .player3("Gisela")
+                .dealer("Juan")
+                .player1score(5)
+                .player2score(4)
+                .player3score(8)
+                .dealerScore(4)
+                .player1bet(2)
+                .player2bet(1.33f)
+                .player3bet(1)
+                .timestamp(dateMock)
+                .build());
 
-        responseMapMock.put("gameData", dataRetrieved);
-        responseMapMock.put("winCount", anyLong());
+        when(gameSieteClientMock.findByName("Alvaro")).thenReturn(dataRetrieved);
 
-        Map<String, Object> actualMap = gameSieteServiceInject.ranking(anyString());
+        long winCount = gameSieteService.infoGana("Alvaro", dataRetrieved);
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("gameData", dataRetrieved);
+        responseMap.put("winCount", winCount);
+
+        Map<String, Object> actualResponseMap = gameSieteService.ranking("Alvaro");
+
+        MatcherAssert.assertThat(responseMap.get("gameData"), Matchers.is(dataRetrieved));
+        MatcherAssert.assertThat(responseMap.get("winCount"), Matchers.is(winCount));
+        MatcherAssert.assertThat(responseMap, Matchers.is(actualResponseMap));
 
     }
 

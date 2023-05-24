@@ -8,10 +8,22 @@ import edu.fpdual.web.service.dto.SolicitudContraseña;
 import jakarta.ws.rs.core.Response;
 import lombok.Setter;
 
+/**
+ * @author : Álvaro Terrasa y Artem Korzhan
+ * @version : 1.0
+ * Clase de servicio de Player, que actúa de intermediaria entre el cliente y los servlets,
+ * aplicando cualquier lógica que no se pueda encontrar dentro de estos.
+ */
 @Setter
 public class PlayerService {
 
+    /**
+     * Cliente de Player
+     */
     private PlayerClient playerClient;
+    /**
+     * Clase para generar 
+     */
     private VerificationCodeGenerator verificationCodeGenerator;
 
     public PlayerService() {

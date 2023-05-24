@@ -16,7 +16,6 @@ public class GameSieteClient {
     private final WebTarget webTarget;
 
     public GameSieteClient(Client client) {
-
         this.webTarget = client.target("http://localhost:8081/RestProject/api/gameSiete");
     }
 
