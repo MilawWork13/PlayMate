@@ -39,47 +39,49 @@
         <input type="text" class="form-control my-5" id="nickname" name="nickname" placeholder="Nombre de usuario">
       </div>
     </div>
+
+    <div class="row justify-content-center my-2">
+      <button id="botonBusqueda" type="button" class="btn btn-primary col-2">Buscar por nombre</button>
+      <div class="col-1"></div>
+      <button type="button" class="btn btn-secondary col-2">Menú principal</button>
+    </div>
+  
+    <!-- Section for displaying game data -->
+    <div class="row mt-4" id="juegos">
+      <div class="row" id="ranking">
+        <!-- Placeholder for ranking information -->
+        <p id="total" class="text-center"></p>
+        <p id="wins" class="text-center"></p>
+        <p id="loss" class="text-center"></p>
+        <!--<p id="most"></p>-->
+      </div>
+      <!-- Table for displaying game details -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Jugador 1</th>
+            <th scope="col">Jugador 2</th>
+            <th scope="col">Jugador 3</th>
+            <th scope="col">Banca</th>
+            <th scope="col">Puntuación jugador 1</th>
+            <th scope="col">Puntuación jugador 2</th>
+            <th scope="col">Puntuación jugador 3</th>
+            <th scope="col">Puntuación banca</th>
+            <th scope="col">Apuesta jugador 1</th>
+            <th scope="col">Apuesta jugador 2</th>
+            <th scope="col">Apuesta jugador 3</th>
+            <th scope="col">Fecha partida</th>
+          </tr>
+        </thead>
+        <tbody id="campos">
+          <!-- Placeholder for game data -->
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Buttons for search and main menu -->
-  <div class="row justify-content-center my-2">
-    <button id="botonBusqueda" type="button" class="btn btn-primary col-2">Buscar por nombre</button>
-    <div class="col-1"></div>
-    <button type="button" class="btn btn-secondary col-2">Menú principal</button>
-  </div>
 
-  <!-- Section for displaying game data -->
-  <div class="row mt-4" id="juegos">
-    <div class="row" id="ranking">
-      <!-- Placeholder for ranking information -->
-      <p id="total" class="text-center"></p>
-      <p id="wins" class="text-center"></p>
-      <p id="loss" class="text-center"></p>
-      <!--<p id="most"></p>-->
-    </div>
-    <!-- Table for displaying game details -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Jugador 1</th>
-          <th scope="col">Jugador 2</th>
-          <th scope="col">Jugador 3</th>
-          <th scope="col">Banca</th>
-          <th scope="col">Puntuación jugador 1</th>
-          <th scope="col">Puntuación jugador 2</th>
-          <th scope="col">Puntuación jugador 3</th>
-          <th scope="col">Puntuación banca</th>
-          <th scope="col">Apuesta jugador 1</th>
-          <th scope="col">Apuesta jugador 2</th>
-          <th scope="col">Apuesta jugador 3</th>
-          <th scope="col">Fecha partida</th>
-        </tr>
-      </thead>
-      <tbody id="campos">
-        <!-- Placeholder for game data -->
-      </tbody>
-    </table>
-  </div>
 
   <!-- Include Bootstrap JS and custom JavaScript file -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

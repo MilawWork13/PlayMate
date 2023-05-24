@@ -48,7 +48,7 @@ public class PlayerServiceTest {
     @Test
     public void testInsertPlayer_ok() {
 
-        playerClient = new PlayerClient();
+        playerClient = new PlayerClient(ClientBuilder.newClient());
         Player player = new Player("Pablo", "123", "email@gmail.com");
 
         Client client = ClientBuilder.newClient();

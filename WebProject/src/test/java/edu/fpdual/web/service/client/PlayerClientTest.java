@@ -1,5 +1,6 @@
 package edu.fpdual.web.service.client;
 
+import edu.fpdual.web.service.dto.GameSiete;
 import edu.fpdual.web.service.dto.Player;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.Entity;
@@ -7,8 +8,11 @@ import jakarta.ws.rs.client.Invocation;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,54 +20,98 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.sql.Date;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class PlayerClientTest {
 
-    @Mock
-    private Client client;
-    @Mock
-    private WebTarget webTarget;
-
-    @Mock
-    private Invocation.Builder builder;
-
-    @Mock
-    private Response response;
-
     private PlayerClient playerClient;
 
+    @Mock
+    private WebTarget webTargetMock;
+
+    @Mock
+    private Client clientMock;
+
+    @Mock
+    private Invocation.Builder builderMock;
+
+    @Mock
+    private Response responseMock;
+
+    @Mock
+    private Date dateMock;
+
     @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-        playerClient = new PlayerClient();
+    public void setUp() {
+        playerClient = new PlayerClient(clientMock);
+        when(clientMock.target(anyString())).thenReturn(webTargetMock);
+        when(webTargetMock.path(Mockito.anyString())).thenReturn(webTargetMock);
     }
 
     @Test
-    void testInsertPlayer_ok() {
+    public void testInsertPlayer_ok() {
 
-        Player player = new Player();
+        playerClient = new PlayerClient(clientMock);
+        when(webTargetMock.request(Mockito.anyString())).thenReturn(builderMock);
+        when(builderMock.post(Mockito.any())).thenReturn(responseMock);
+        when(responseMock.getStatus()).thenReturn(201);
 
-        when(client.target("http://localhost:8081/RestProject/api/player")).thenReturn(webTarget);
-        when(webTarget.path("/insertPlayer")).thenReturn(webTarget);
-        when(webTarget.request(MediaType.TEXT_PLAIN)).thenReturn(builder);
-        when(builder.post(Entity.entity(player, MediaType.APPLICATION_JSON))).thenReturn(response);
+        Player expectedPlayer = Player.builder()
+                .nickname("Alvaro")
+                .password("123")
+                .email("alvaro@gmail.com")
+                .build();
 
-        // Invoke the method under test
-        Response actualResponse = playerClient.insertPlayer(player);
+        Response actualResponse = playerClient.insertPlayer(expectedPlayer);
 
-        // Verify the interactions
-        verify(client).target("http://localhost:8081/RestProject/api/player");
-        verify(webTarget).path("/insertPlayer");
-        verify(webTarget).request(MediaType.TEXT_PLAIN);
-        verify(builder).post(Entity.entity(player, MediaType.APPLICATION_JSON));
+        MatcherAssert.assertThat(actualResponse, Matchers.is(responseMock));
+        MatcherAssert.assertThat(responseMock.getStatus(), Matchers.is(201));
 
-        // Verify the returned response
-        assertEquals(response, actualResponse);
+    }
+
+    @Test
+    public void testDeletePlayer_ok() {
+
+        playerClient = new PlayerClient(clientMock);
+        when(webTargetMock.request(Mockito.anyString())).thenReturn(builderMock);
+        when(builderMock.post(Mockito.any())).thenReturn(responseMock);
+        when(responseMock.getStatus()).thenReturn(201);
+
+        Player expectedPlayer = Player.builder()
+                .nickname("Alvaro")
+                .password("123")
+                .email("alvaro@gmail.com")
+                .build();
+
+        Response actualResponse = playerClient.deletePlayer(expectedPlayer);
+
+        MatcherAssert.assertThat(actualResponse, Matchers.is(responseMock));
+        MatcherAssert.assertThat(responseMock.getStatus(), Matchers.is(201));
+
+    }
+
+    @Test
+    public void testUpdatePassword_ok() {
+
+        playerClient = new PlayerClient(clientMock);
+        when(webTargetMock.request(Mockito.anyString())).thenReturn(builderMock);
+        when(builderMock.post(Mockito.any())).thenReturn(responseMock);
+        when(responseMock.getStatus()).thenReturn(201);
+
+        Player expectedPlayer = Player.builder()
+                .nickname("Alvaro")
+                .password("123")
+                .email("alvaro@gmail.com")
+                .build();
+
+        Response actualResponse = playerClient.updatePassword(expectedPlayer);
+
+        MatcherAssert.assertThat(actualResponse, Matchers.is(responseMock));
+        MatcherAssert.assertThat(responseMock.getStatus(), Matchers.is(201));
+
     }
 }
-
-
-

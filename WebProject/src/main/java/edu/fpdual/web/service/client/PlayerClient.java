@@ -27,8 +27,7 @@ public class PlayerClient {
      * Se inicializa el webtarget.
      * Se especifica la URL base para posterior conexión con la Api.
      */
-    public PlayerClient() {
-        Client client = ClientBuilder.newClient();
+    public PlayerClient(Client client) {
         this.webTarget = client.target("http://localhost:8081/RestProject/api/player");
     }
 

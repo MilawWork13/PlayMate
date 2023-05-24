@@ -9,19 +9,19 @@ const bloqueCon = (i) => {
 
   // Create first label div
   const labelDiv1 = document.createElement('div');
-  labelDiv1.classList.add('col-2', 'mt-4');
+  labelDiv1.classList.add('col-6');
   row.appendChild(labelDiv1);
 
   // Create label element for "Nombre" and append to first label div
   const label1 = document.createElement('label');
   label1.setAttribute('for', 'nickname');
-  label1.classList.add('col-sm-2', 'col-form-label');
+  label1.classList.add('col-sm-6', 'col-form-label');
   label1.textContent = 'Nombre';
   labelDiv1.appendChild(label1);
 
   // Create input div for "Nombre"
   const inputDiv1 = document.createElement('div');
-  inputDiv1.classList.add('col-10', 'mt-4');
+  inputDiv1.classList.add('col-6');
   row.appendChild(inputDiv1);
 
   // Create input element for "Nombre" and append to input div for "Nombre"
@@ -35,19 +35,19 @@ const bloqueCon = (i) => {
 
   // Create second label div
   const labelDiv2 = document.createElement('div');
-  labelDiv2.classList.add('col-2', 'mt-4');
+  labelDiv2.classList.add('col-6');
   row.appendChild(labelDiv2);
 
   // Create label element for "Contraseña" and append to second label div
   const label2 = document.createElement('label');
   label2.setAttribute('for', 'password');
-  label2.classList.add('col-sm-2', 'col-form-label');
+  label2.classList.add('col-sm-6', 'col-form-label');
   label2.textContent = 'Contraseña';
   labelDiv2.appendChild(label2);
 
   // Create input div for "Contraseña"
   const inputDiv2 = document.createElement('div');
-  inputDiv2.classList.add('col-10', 'mt-4');
+  inputDiv2.classList.add('col-6');
   row.appendChild(inputDiv2);
 
   // Create input element for "Contraseña" and append to input div for "Contraseña"
@@ -62,7 +62,7 @@ const bloqueCon = (i) => {
   // Create div with id "inputApuesta" and classes "mb-3", "mt-4", and "row"
   const inputApuesta = document.createElement('div');
   inputApuesta.setAttribute('id', 'inputApuesta');
-  inputApuesta.classList.add('mb-3', 'mt-4', 'row');
+  inputApuesta.classList.add('row', 'justify-content-between', 'my-2');
   row.appendChild(inputApuesta);
 
   // Create input div for "Euros" and append to inputApuesta
@@ -83,7 +83,7 @@ const bloqueCon = (i) => {
 
     // Create input div for "Céntimos" and append to inputApuesta
     const inputDiv4 = document.createElement('div');
-    inputDiv4.classList.add('col-7');
+    inputDiv4.classList.add('col-8');
     inputApuesta.appendChild(inputDiv4);
 
     // Create input element for "Céntimos" and append to input div for "Céntimos"

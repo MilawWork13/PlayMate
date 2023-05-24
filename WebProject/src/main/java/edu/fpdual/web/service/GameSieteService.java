@@ -10,14 +10,34 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
+/**
+ * @author : Álvaro Terrasa y Artem Korzhan
+ * @version : 1.0
+ * Clase de servicio de GameSiete, que actúa de intermediaria entre el cliente y los servlets,
+ * aplicando cualquier lógica que no se pueda encontrar dentro de estos.
+ */
 public class GameSieteService {
 
+    /**
+     * Cliente de GameSiete
+     */
     private GameSieteClient gameSieteClient;
 
+    /**
+     * Constructor de la clase, que inicializa el cliente de GameSiete
+     */
     public GameSieteService() {
         this.gameSieteClient = new GameSieteClient(ClientBuilder.newClient());
     }
 
+    /**
+     * Método que recoge todas las partidas de siete y medio de la BBDD según nombre
+     * de jugador introducido. A su vez, proporciona la información para mostrar las
+     * partidas totales, ganadas y perdidas de un jugador.
+     *
+     * @param requestBody - String - Nombre del jugador a buscar
+     * @return Map<String, Object> - Información obtenida
+     */
     public Map<String, Object> ranking(String requestBody) {
         List<GameSiete> dataRetrieved = this.gameSieteClient.findByName(requestBody);
         if (dataRetrieved != null) {
@@ -31,6 +51,12 @@ public class GameSieteService {
         }
     }
 
+    /**
+     * Método que registra un juego de siete y medio.
+     *
+     * @param game - GameSiete - Juego a registrar
+     * @return String - Respuesta que determinará el comportamiento de la página
+     */
     public String registerGame(GameSiete game) {
         Response response = this.gameSieteClient.insertGame(game);
         if (response.getStatus() == 201) {
@@ -40,6 +66,14 @@ public class GameSieteService {
         }
     }
 
+    /**
+     * Método que aplica un filtro para determinar cuantas partidas de siete y medio ha ganado
+     * en total un jugador.
+     *
+     * @param nickname - String - Nombre del jugador del que se buscan las partidas
+     * @param dataRetrieved - String - Lista de las partidas encontradas según el nombre del jugador
+     * @return long - El número de partidas ganadas
+     */
     public long infoGana(String nickname, List<GameSiete> dataRetrieved) {
 
         List<Predicate<GameSiete>> predicatesWin = List.of(

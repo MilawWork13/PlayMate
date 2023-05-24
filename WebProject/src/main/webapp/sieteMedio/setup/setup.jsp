@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="input1">
+                        <div class="row my-2" id="input1">
                             <!-- Placeholder for player 1 input -->
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="input2">
+                        <div class="row my-2" id="input2">
                             <!-- Placeholder for player 2 input -->
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="input3">
+                        <div class="row my-2" id="input3">
                             <!-- Placeholder for player 3 input -->
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="input4">
+                        <div class="row my-2" id="input4">
                             <!-- Placeholder for player 4 input -->
                         </div>
                     </div>
