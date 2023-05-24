@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+.background {
+    width: 100lh;
+    height: 60vh;
+}
+
+.img-fluid {
+    width: 500px;
+    height: 500px;
+}
+
+.welcomeText h1 {
+    text-align:center;
+    text-transform:uppercase;
+    font-size:26px; letter-spacing:1px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 16px 0;
+    grid-gap: 22px;
+  }
+  
+  .welcomeText h1:after,.welcomeText h1:before {
+    content: " ";
+    display: block;
+    border-bottom: 2px solid #ccc;
+  }
+
+  .lastLine{
+    content: " ";
+    display: block;
+    border-bottom: 2px solid #ccc;
+  }
+
+  .welcomeText p {
+    text-transform: none;
+    font-size:20px;
+    font-weight: normal;
+    font-style: italic; font-family: "Playfair Display","Bookman",serif;
+    color:#616161; letter-spacing:-0.005em; word-spacing:1px;
+    letter-spacing:none;
+  }
+
+  .navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+
+  @media (max-width: 1400px) {
+    /* Adjust the max-width value as needed */
+    .mainSection {
+      height: 135vh; /* Set the height to 120vh for smaller viewports */
+    }
+  }
