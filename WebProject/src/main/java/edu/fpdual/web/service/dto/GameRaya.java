@@ -6,11 +6,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @XmlRootElement
+/**
+ * @author: Álvaro Terrasa y Artem Korzhan
+ * @version: 1.0
+ * Objeto que representa una partida de cuatro en raya de la BBDD.
+ */
 public class GameRaya {
     private String player1;
     private String player2;
