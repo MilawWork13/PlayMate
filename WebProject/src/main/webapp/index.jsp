@@ -83,7 +83,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <!-- Card for game "Siete y medio" -->
           <div class="col">
-            <div class="card">
+            <div class="card" id="sieteMedioImgClick">
               <img src="resources/sieteymedioIMG.png" class="card-img-top" alt="sieteMedio">
               <div class="card-body">
                 <h5 class="card-title text-center"></h5>
@@ -97,7 +97,7 @@
           </div>
           <!-- Card for game "Cuatro en raya" -->
           <div class="col">
-            <div class="card">
+            <div class="card" id="cuatroRayaImgClick">
               <img src="resources/4rayaIMG.png" class="card-img-top" alt="4raya">
               <div class="card-body">
                 <h5 class="card-title text-center">Cuatro en raya</h5>

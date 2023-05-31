@@ -62,7 +62,7 @@ function verifyDiv() {
     const submitBtn1 = document.createElement('button');
     submitBtn1.type = 'button';
     submitBtn1.id = 'checkCode';
-    submitBtn1.className = 'btn btn-secondary';
+    submitBtn1.className = 'btn btn-primary';
     submitBtn1.style.width = '200px';
     submitBtn1.style.height = '40px';
     submitBtn1.textContent = 'Verificar código';
@@ -70,6 +70,8 @@ function verifyDiv() {
     // Append the button to its parent div
     submitDiv1.appendChild(submitBtn1);
     verifyDiv.appendChild(submitDiv1);
+
+    document.querySelector("#retorno").style = "margin-left:-18px";
 
     return verifyDiv;
 }
@@ -225,8 +227,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                         alert("Contraseña cambiada correctamente");
                                         window.location.replace("http://localhost:8080/WebProject/index.jsp");
                                     } else if (data == "0") {
-                                        console.log(data);
-                                        //window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
+                                        window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
                                     }
                                 })
                             });

@@ -35,7 +35,7 @@ public class PdfItext {
         pdfPTable.setSpacingBefore(5f);
         addTableHeaders(pdfPTable);
         addTableSimpleRows(pdfPTable, gameData);
-        addTableCustomRows(pdfPTable, gameData);
+        //addTableCustomRows(pdfPTable, gameData);
 
         document.add(paragraph);
         //document.add(Chunk.NEWLINE);
@@ -65,12 +65,12 @@ public class PdfItext {
     }
 
     private void addTableHeaders(PdfPTable pdfPTable) {
-        Stream.of("Jugador 1", "Jugador 2", "Jugador 3", "Banca", "Puntuacion J1", "Puntuacion J2",
-                        "Puntuacion J3", "Puntuacion Banca", "Apuesta J1", "Apuesta J2", "Apuesta J3", "Fecha de partida")
+        Stream.of("Jugador 1", "Jugador 2", "Jugador 3", "Banca", "Punt. J1", "Punt. J2",
+                        "Punt. J3", "Punt. Banca", "Apuesta J1", "Apuesta J2", "Apuesta J3", "Fecha partida")
                 .forEach(nombreColumna -> {
                     PdfPCell header = new PdfPCell();
                     header.setBackgroundColor(BaseColor.GREEN);
-                    header.setBorderWidth(2);
+                    header.setBorderWidth(1);
                     header.setPhrase(new Phrase(nombreColumna));
                     pdfPTable.addCell(header);
                 });
@@ -173,12 +173,12 @@ public class PdfItext {
         });
     }
 
-    /*public static void main(String[] args) throws DocumentException, IOException, URISyntaxException {
+    public static void main(String[] args) throws DocumentException, IOException, URISyntaxException {
 
         List<GameSiete> gameData = Arrays.asList(new GameSiete("1", "2", "3", "B", 1, 2, 3, 4, 11, 22, 33, new Date(2020, 11, 23))
         , new GameSiete("1", "2", "3", "B", 1, 2, 3, 4, 11, 22, 33, new Date(2020, 11, 23)));
 
         new PdfItext().createPDF("PartidasSieteMedio", "Resultados de búsqueda para el usuario: a fecha: ", gameData);
-    }*/
+    }
 
 }

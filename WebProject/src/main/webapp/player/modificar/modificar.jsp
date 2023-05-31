@@ -32,23 +32,23 @@
         <h4 class="text-center">Introduzca el correo de su cuenta</h4>
 
         <!-- Form for Email Input -->
-        <div class="mb-3 mt-4 row">
-          <div class="col-3"></div>
+        <div class="mb-3 mt-4 row d-flex justify-content-center">
           <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-4">
             <input type="text" class="form-control" id="email" name="email" placeholder="Correo electrónico">
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-4 mt-4" style="margin-left: -20px;">
+        <div class="row">
+          <div class="col d-flex justify-content-center mt-4">
 
-          <!-- Button to Check Email -->
-          <button type="submit" id="checkEmail" class="btn btn-primary" style="width:200px; height:40px">Comprobar
-            correo</button>
+            <!-- Button to Check Email -->
+            <button type="submit" id="checkEmail" class="btn btn-primary" style="width:200px; height:40px">Comprobar
+              correo</button>
+          </div>
         </div>
-        <div class="col-1 mt-4">
+      </div>
+      <div class="row d-flex justify-content-center" id="retorno" style="margin-left: -36px">
+        <div class="col-2 mt-4">
           <form action="/WebProject/index.jsp" method="GET">
 
             <!-- Button to Return to Home Page -->

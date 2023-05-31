@@ -38,6 +38,8 @@ public class PlayerService {
         this.manager = manager;
     }
 
+
+
     /**
      * Realiza una operación insert que registra un jugador en la BBDD.
      *
